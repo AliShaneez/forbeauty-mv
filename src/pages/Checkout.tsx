@@ -128,7 +128,7 @@ export default function Checkout() {
             </div>
             <Button className="w-full" onClick={placeOrder} disabled={items.length === 0}>Place Order</Button>
           </div>
-          <a className="mt-3 inline-block text-sm text-brand-700" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I would like to confirm delivery charges for my order.')}`} target="_blank">Contact via WhatsApp</a>
+          <a className="mt-3 inline-block text-sm text-brand-700" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I would like to confirm delivery charges for my order.')}`} target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
         </div>
       </div>
     </div>

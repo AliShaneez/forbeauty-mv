@@ -46,7 +46,7 @@ export default function ProductDetails() {
             <Button onClick={() => { addItem(product, quantity, shade); toggle(true) }}>Add to Cart</Button>
             <Button variant="secondary" onClick={() => navigate('/checkout')}>Buy Now</Button>
           </div>
-          <a className="inline-block text-sm text-brand-700" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I have a question about ' + product.name)}`} target="_blank">Contact via WhatsApp</a>
+          <a className="inline-block text-sm text-brand-700" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I have a question about ' + product.name)}`} target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
         </div>
       </div>
 
