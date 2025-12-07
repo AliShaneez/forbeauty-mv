@@ -46,18 +46,18 @@ export default function Checkout() {
 
   return (
     <div className="container mx-auto px-4 py-8 container-max">
-      <h1 className="text-2xl font-semibold text-brand-900 mb-6">Checkout</h1>
+      <h1 className="text-2xl font-semibold text-charcoal mb-6">Checkout</h1>
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-6">
           <div className="space-y-3">
-            <h2 className="text-lg font-medium">Customer Info</h2>
+            <h2 className="text-lg font-medium text-charcoal">Customer Info</h2>
             <Input placeholder="Full Name" value={fullName} onChange={e => setFullName(e.target.value)} />
             <Input placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)} />
             <Input placeholder="Email Address" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-lg font-medium">Delivery / Shipping Info</h2>
+            <h2 className="text-lg font-medium text-charcoal">Delivery / Shipping Info</h2>
             <Select value={deliveryType} onChange={e => setDeliveryType(e.target.value)}>
               <option value="male">Male’ / Hulhumale’ Delivery</option>
               <option value="island">Island Delivery (Courier)</option>
@@ -67,26 +67,26 @@ export default function Checkout() {
             <Input placeholder="Island / Atoll" value={island} onChange={e => setIsland(e.target.value)} />
             <textarea className="w-full rounded-md border border-brand-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-300" placeholder="Delivery Note (optional)" value={note} onChange={e => setNote(e.target.value)} />
             {deliveryType === 'male' ? (
-              <div className="text-sm text-brand-700">Fixed delivery fee {formatCurrency(deliveryFee)} applies.</div>
+              <div className="text-sm text-charcoal">Fixed delivery fee {formatCurrency(deliveryFee)} applies.</div>
             ) : (
-              <div className="text-sm text-brand-700">Courier charges will be confirmed via WhatsApp after order.</div>
+              <div className="text-sm text-charcoal">Courier charges will be confirmed via WhatsApp after order.</div>
             )}
           </div>
 
           <div className="space-y-3">
-            <h2 className="text-lg font-medium">Billing & Payment</h2>
+            <h2 className="text-lg font-medium text-charcoal">Billing & Payment</h2>
             <div className="space-y-2">
               <label className="flex items-center gap-2">
                 <input type="radio" checked={payment === 'cod'} onChange={() => setPayment('cod')} />
                 <span>Cash on Delivery (COD)</span>
               </label>
-              <div className="text-sm text-brand-700">Please keep the exact amount ready on delivery</div>
+              <div className="text-sm text-charcoal">Please keep the exact amount ready on delivery</div>
               <label className="flex items-center gap-2 mt-2">
                 <input type="radio" checked={payment === 'bank'} onChange={() => setPayment('bank')} />
                 <span>Bank Transfer</span>
               </label>
               {payment === 'bank' && (
-                <div className="rounded-md border border-brand-100 p-3 text-sm">
+                <div className="rounded-md border border-primary p-3 text-sm">
                   <div>Bank: Bank of Maldives</div>
                   <div>Account Name: ForBeauty.mv</div>
                   <div>Account No: 777777777777</div>
@@ -99,21 +99,21 @@ export default function Checkout() {
             </div>
           </div>
         </div>
-        <div>
-          <div className="rounded-lg border border-brand-100 bg-white p-4 space-y-3">
-            <h2 className="text-lg font-medium">Order Summary</h2>
+          <div>
+          <div className="rounded-lg border border-primary bg-white p-4 space-y-3">
+            <h2 className="text-lg font-medium text-charcoal">Order Summary</h2>
             <div className="space-y-2 text-sm">
               {items.map(i => (
                 <div key={`${i.product.id}-${i.shade ?? ''}`} className="flex justify-between">
                   <div>
                     <div>{i.product.name}</div>
-                    {i.shade && <div className="text-brand-600">Shade: {i.shade}</div>}
-                    <div className="text-brand-600">Qty: {i.quantity}</div>
-                  </div>
-                  <div>{formatCurrency(i.product.price * i.quantity)}</div>
+                    {i.shade && <div className="text-charcoal">Shade: {i.shade}</div>}
+                    <div className="text-charcoal">Qty: {i.quantity}</div>
                 </div>
-              ))}
-            </div>
+                <div>{formatCurrency(i.product.price * i.quantity)}</div>
+              </div>
+            ))}
+          </div>
             <div className="flex justify-between text-sm">
               <span>Subtotal</span>
               <span>{formatCurrency(subtotal)}</span>
@@ -128,7 +128,7 @@ export default function Checkout() {
             </div>
             <Button className="w-full" onClick={placeOrder} disabled={items.length === 0}>Place Order</Button>
           </div>
-          <a className="mt-3 inline-block text-sm text-brand-700" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I would like to confirm delivery charges for my order.')}`} target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
+          <a className="mt-3 inline-block text-sm text-charcoal" href={`https://wa.me/9607000000?text=${encodeURIComponent('Hello, I would like to confirm delivery charges for my order.')}`} target="_blank" rel="noopener noreferrer">Contact via WhatsApp</a>
         </div>
       </div>
     </div>

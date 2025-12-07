@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { products } from '@data/products'
+import { useProducts } from '@context/ProductsContext'
 import Button from '@components/Button'
 import Select from '@components/Select'
 import { useCart } from '@context/CartContext'
@@ -9,6 +9,7 @@ import { formatCurrency } from '@utils/formatCurrency'
 export default function ProductDetails() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { products } = useProducts()
   const product = products.find(p => p.id === id)
   const { addItem, toggle } = useCart()
   const [quantity, setQuantity] = useState(1)
@@ -22,13 +23,13 @@ export default function ProductDetails() {
     <div className="container mx-auto px-4 py-8 container-max">
       <div className="grid md:grid-cols-2 gap-8">
         <div>
-          <img src={product.imageUrl} alt={product.name} className="w-full rounded-lg border border-brand-100 object-cover" />
+          <img src={product.imageUrl} alt={product.name} className="w-full rounded-lg border border-primary object-cover" />
         </div>
         <div className="space-y-4">
-          <div className="text-sm text-brand-600">{product.brand}</div>
-          <h1 className="text-2xl font-semibold text-brand-900">{product.name}</h1>
-          <div className="text-brand-800">{formatCurrency(product.price)}</div>
-          <p className="text-brand-700">{product.description}</p>
+          <div className="text-sm text-charcoal">{product.brand}</div>
+          <h1 className="text-2xl font-semibold text-charcoal">{product.name}</h1>
+          <div className="text-charcoal">{formatCurrency(product.price)}</div>
+          <p className="text-charcoal">{product.description}</p>
           {product.shades && (
             <div className="space-y-2">
               <div className="text-sm">Shade</div>
@@ -51,12 +52,12 @@ export default function ProductDetails() {
       </div>
 
       <div className="mt-12">
-        <h2 className="text-xl font-semibold text-brand-900 mb-4">You may also like</h2>
+        <h2 className="text-xl font-semibold text-charcoal mb-4">You may also like</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {related.map(r => (
-            <div key={r.id} className="rounded-lg border border-brand-100 p-3">
+            <div key={r.id} className="rounded-lg border border-primary p-3">
               <img src={r.imageUrl} alt={r.name} className="w-full h-32 object-cover rounded" />
-              <div className="mt-2 text-sm text-brand-600">{r.brand}</div>
+              <div className="mt-2 text-sm text-charcoal">{r.brand}</div>
               <div className="font-medium">{r.name}</div>
             </div>
           ))}

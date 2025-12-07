@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { products } from '@data/products'
+import { useProducts } from '@context/ProductsContext'
 import ProductGrid from '@components/ProductGrid'
 import Input from '@components/Input'
 import Select from '@components/Select'
@@ -10,6 +10,7 @@ export default function Shop() {
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState('')
   const category = params.get('category') ?? ''
+  const { products } = useProducts()
 
   const filtered = useMemo(() => {
     let list = products
